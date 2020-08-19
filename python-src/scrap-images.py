@@ -13,10 +13,12 @@ def fetch_image_urls(query:str, max_links_to_fetch:int, wd:webdriver, sleep_betw
         sleep(sleep_between_interactions)    
     
     # build the google query
-    search_url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={q}&oq={q}&gs_l=img"
+    #search_url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={q}&oq={q}&gs_l=img"
+    search_url = "https://www.google.com/search?as_st=y&tbm=isch&as_q=&as_epq={q}&as_oq=&as_eq=&cr=&as_sitesearch=&safe=images&tbs=iar:s"
 
+    print(search_url.format(q=query.replace(" ","+")))
     # load the page
-    wd.get(search_url.format(q=query))
+    wd.get(search_url.format(q=query.replace(" ","+")))
 
     image_urls = set()
     image_count = 0
@@ -51,7 +53,7 @@ def fetch_image_urls(query:str, max_links_to_fetch:int, wd:webdriver, sleep_betw
                 break
         else:
             print("Found:", len(image_urls), "image links, looking for more ...")
-            time.sleep(30)
+            sleep(30)
             return
             load_more_button = wd.find_element_by_css_selector(".mye4qd")
             if load_more_button:
@@ -86,7 +88,7 @@ def search_and_download(search_term:str,driver_path:str,target_path='./images',n
         os.makedirs(target_folder)
 
     with webdriver.Chrome(executable_path=driver_path) as wd:
-        res = fetch_image_urls(search_term, number_images, wd=wd, sleep_between_interactions=0.5)
+        res = fetch_image_urls(search_term, number_images, wd=wd, sleep_between_interactions=0.2)
         
     for elem in res:
         persist_image(target_folder,elem)
@@ -121,4 +123,8 @@ def teste_get_images():
     wd.quit()
 
 if __name__ == '__main__':
-    search_and_download(search_term = 'dogs', driver_path=r'e:/dev/chromedriver', number_images=5) 
+    number_images = 10
+    search_and_download(search_term = 'Lagarta da soja', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    #search_and_download(search_term = 'Percevejo marrom', driver_path=r'e:/dev/chromedriver', number_images=number_images) 
+    #search_and_download(search_term = 'Percevejo pequeno', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    #search_and_download(search_term = 'Percevejo verde', driver_path=r'e:/dev/chromedriver', number_images=number_images)
