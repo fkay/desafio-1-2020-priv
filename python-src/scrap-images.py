@@ -54,7 +54,7 @@ def fetch_image_urls(query:str, max_links_to_fetch:int, wd:webdriver, sleep_betw
         else:
             print("Found:", len(image_urls), "image links, looking for more ...")
             sleep(30)
-            return
+            #return
             load_more_button = wd.find_element_by_css_selector(".mye4qd")
             if load_more_button:
                 wd.execute_script("document.querySelector('.mye4qd').click();")
@@ -88,7 +88,7 @@ def search_and_download(search_term:str,driver_path:str,target_path='./images',n
         os.makedirs(target_folder)
 
     with webdriver.Chrome(executable_path=driver_path) as wd:
-        res = fetch_image_urls(search_term, number_images, wd=wd, sleep_between_interactions=0.2)
+        res = fetch_image_urls(search_term, number_images, wd=wd, sleep_between_interactions=0.1)
         
     for elem in res:
         persist_image(target_folder,elem)
@@ -118,13 +118,14 @@ def start_driver():
 def teste_get_images():
     wd = start_driver()
 
-    images = fetch_image_urls('dogs', 5, wd, 2)
+    images = fetch_image_urls('dogs', max_links_to_fetch=5, wd=wd, sleep_between_interactions = 2)
 
     wd.quit()
 
 if __name__ == '__main__':
-    number_images = 10
-    search_and_download(search_term = 'Lagarta da soja', driver_path=r'e:/dev/chromedriver', number_images=number_images)
-    #search_and_download(search_term = 'Percevejo marrom', driver_path=r'e:/dev/chromedriver', number_images=number_images) 
-    #search_and_download(search_term = 'Percevejo pequeno', driver_path=r'e:/dev/chromedriver', number_images=number_images)
-    #search_and_download(search_term = 'Percevejo verde', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    number_images = 250
+    search_and_download(search_term = 'Anticarsia gemmatalis', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    search_and_download(search_term = 'Euschistus heros', driver_path=r'e:/dev/chromedriver', number_images=number_images) 
+    search_and_download(search_term = 'Piezodorus guildinii', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    search_and_download(search_term = 'Nezara viridula', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+

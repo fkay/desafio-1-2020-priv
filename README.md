@@ -46,10 +46,10 @@ O objetivo deste desafio é criar um sistema automático de identificação das 
 
 Vamos focar somente nas quatro principais pragas que atigem a lavoura de soja, são elas:
 
-1. Lagarta da soja
-2. Percevejo marrom
-3. Percevejo pequeno
-4. Percevejo verde
+1. Lagarta da soja (Anticarsia gemmatalis)
+2. Percevejo marrom (Euschistus heros)
+3. Percevejo pequeno (Piezodorus guildinii)
+4. Percevejo verde (Nezara viridula)
 
 *Obs: Os nomes das classes esperadas são apresentados mais abaixo. Não utilize os nomes acima como nome das classes.*
 
