@@ -123,9 +123,12 @@ def teste_get_images():
     wd.quit()
 
 if __name__ == '__main__':
-    number_images = 250
+    number_images = 100
     search_and_download(search_term = 'Anticarsia gemmatalis', driver_path=r'e:/dev/chromedriver', number_images=number_images)
-    search_and_download(search_term = 'Euschistus heros', driver_path=r'e:/dev/chromedriver', number_images=number_images) 
-    search_and_download(search_term = 'Piezodorus guildinii', driver_path=r'e:/dev/chromedriver', number_images=number_images)
-    search_and_download(search_term = 'Nezara viridula', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    #search_and_download(search_term = 'Euschistus heros', driver_path=r'e:/dev/chromedriver', number_images=number_images) 
+    #search_and_download(search_term = 'Piezodorus guildinii', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    #search_and_download(search_term = 'Nezara viridula', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    #search_and_download(search_term = 'Coccinellidae', driver_path=r'e:/dev/chromedriver', number_images=number_images)
+    #search_and_download(search_term = 'Lepidoptera', driver_path=r'e:/dev/chromedriver', number_images=number_images) 
+    #search_and_download(search_term = 'Gryllidae', driver_path=r'e:/dev/chromedriver', number_images=number_images) 
 
